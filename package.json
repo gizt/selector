@@ -1,10 +1,14 @@
 {
   "name": "@gizt/selector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JSON Selector",
   "main": "src/index.js",
   "scripts": {
     "test": "jest"
+  },
+  "repository": {
+    "url": "https://github.com/gizt/selector.git",
+    "type": "git"
   },
   "jest": {
     "bail": true,
@@ -15,9 +19,5 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^23.6.0"
-  },
-  "dependencies": {
-    "global": "^4.3.2",
-    "jsdoc": "^3.5.5"
   }
 }

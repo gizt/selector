@@ -1,10 +1,11 @@
-# Fast & Simple JSON Selector
+# @gizt/selector - Fast & Simple JSON Selector
 
 [![](https://img.shields.io/circleci/project/github/gizt/selector/master.svg)](https://circleci.com/gh/gizt/selector)
+[![](https://img.shields.io/npm/dt/@gizt/selector.svg)](https://www.npmjs.com/package/@gizt/selector)
 
 ### Quick start
 
-```
+```sh
 npm install @gizt/selector
 ```
 
