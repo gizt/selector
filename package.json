@@ -1,8 +1,13 @@
 {
   "name": "@gizt/selector",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "JSON Selector",
-  "keywords": ["json", "selector", "query", "path"],
+  "keywords": [
+    "json",
+    "selector",
+    "query",
+    "path"
+  ],
   "main": "src/index.js",
   "scripts": {
     "test": "jest"
