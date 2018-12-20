@@ -1,0 +1,23 @@
+{
+  "name": "@gizt/selector",
+  "version": "1.0.0",
+  "description": "JSON Selector",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "bail": true,
+    "testMatch": [
+      "**/test/**/*.js"
+    ]
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "jsdoc": "^3.5.5"
+  }
+}

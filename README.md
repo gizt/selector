@@ -1,0 +1,47 @@
+# Fast & Simple JSON Selector
+
+### Quick start
+
+```
+npm install @gizt/selector
+```
+
+### Example
+
+```js
+let data = {
+  title: 'Awesome',
+  users: [
+    {
+      name: 'John', family: 'Doe', friends: [{ name: 'F1' }]
+    },
+    {
+      name: 'Joe', family: 'Dae', friends: [{ name: 'F2' }]
+    },
+    ...
+  ]
+}
+
+let select = require('@gizt/selector')
+
+// Simple selector
+select('users[].name', data) // ['John', 'Joe', ...]
+
+// Nested array
+select('users[].friends[].name', data) // ['F1', 'F2']
+
+// Wildcard '*'
+select('users[].*am*', data) // ['John', 'Doe', 'Joe', 'Dae']
+
+// Array index & slice
+select('users[1].name', data) // 'Joe'
+
+// all elements start from index `1`
+select('users[1:].name', data) // ['Joe', 'Ja', ...]
+
+// first 2 elements
+select('users[:2].name', data) // ['John', 'Joe']
+
+```
+
+For more example, please see `test` directory
