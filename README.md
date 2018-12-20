@@ -1,6 +1,6 @@
 # Fast & Simple JSON Selector
 
-![](https://img.shields.io/circleci/project/github/gizt/selector/master.svg)
+[![](https://img.shields.io/circleci/project/github/gizt/selector/master.svg)](https://circleci.com/gh/gizt/selector)
 
 ### Quick start
 
