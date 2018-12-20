@@ -1,5 +1,7 @@
 # Fast & Simple JSON Selector
 
+![](https://img.shields.io/circleci/project/github/gizt/selector/master.svg)
+
 ### Quick start
 
 ```
