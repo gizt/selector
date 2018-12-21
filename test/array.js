@@ -1,4 +1,4 @@
-const matcher = require('../src')
+const matcher = require('../')
 
 describe('Array', () => {
   test('should match simple array property', () => {

@@ -1,4 +1,4 @@
-const { parse, tokenize } = require('../src/parser')
+const { parse, tokenize } = require('../dist/main/parser')
 
 describe('Parser', () => {
   

@@ -1,7 +1,4 @@
-/**
- * @module
- */
-const NODES = require('./nodes')
+import NODES from './nodes'
 
 /**
  * GRAMMAR
@@ -39,7 +36,7 @@ const REGEX = new RegExp('(?:' + Object.values(TOKENS).map(r => r.source).join('
  * 
  * tokenize('user.name') // return [{ type: 'ID', value: 'user'} ... ]
  */
-function tokenize(input) {
+export function tokenize(input) {
   let r, tokens = [], syms = ['.', '[', ']', '*', ':']
 
   while(r = REGEX.exec(input)) {
@@ -77,13 +74,13 @@ function expect(type, tokens) {
  * @param {Object[]} tokens 
  * @param {Object} object 
  */
-function parse(tokens, object) {
-  let ast = parseSelector(tokens, object)
+export function parse(tokens) {
+  let ast = parseSelector(tokens)
   expect('EOL', tokens)
 
   return ast
 }
-function parseSelector(tokens, object) {
+function parseSelector(tokens) {
   let prefix = accept('[', tokens, false) ? parseArray(tokens) : parseName(tokens)
 
   // parse suffixes
@@ -96,7 +93,7 @@ function parseSelector(tokens, object) {
 }
 
 function parseName(tokens) {
-  let token, all = end = false
+  let token, all = false, end = false
   let start = accept('*', tokens) ? true : false
 
   token = accept('ID', tokens)
@@ -115,7 +112,7 @@ function parseName(tokens) {
 }
 
 function parseArray(tokens) {
-  let start = end = slice = single = false
+  let start = false, end = false, slice = false, single = false
 
   expect('[', tokens)
 
@@ -149,5 +146,3 @@ function parseSuffix(tokens) {
     return NODES[NODES.property](name)
   }
 }
-
-module.exports = { parse, tokenize }

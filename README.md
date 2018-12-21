@@ -1,5 +1,6 @@
 # @gizt/selector - Fast & Simple JSON Selector
 
+[![](https://img.shields.io/npm/v/@gizt/selector.svg)](https://www.npmjs.com/package/@gizt/selector)
 [![](https://img.shields.io/circleci/project/github/gizt/selector/master.svg)](https://circleci.com/gh/gizt/selector)
 [![](https://img.shields.io/npm/dt/@gizt/selector.svg)](https://www.npmjs.com/package/@gizt/selector)
 
@@ -10,6 +11,15 @@ npm install @gizt/selector
 ```
 
 ### Example
+
+#### Usage
+```js
+// es6/browser
+import select from '@gizt/selector'
+
+// node
+const select = require('@gizt/selector)
+```
 
 ```js
 let data = {
@@ -24,8 +34,6 @@ let data = {
     ...
   ]
 }
-
-let select = require('@gizt/selector')
 
 // Simple selector
 select('users[].name', data) // ['John', 'Joe', ...]

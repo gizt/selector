@@ -1,4 +1,4 @@
-const select = require('../src')
+const select = require('../')
 
 const object = {
   a: {

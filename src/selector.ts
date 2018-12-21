@@ -1,14 +1,9 @@
-/**
- * @module
- */
-let { tokenize, parse } = require('./parser')
+import { Node } from './nodes'
+import { tokenize, parse } from './parser'
 
-/**
- * State
- */
-const State = {
-  expand: false,
-  prev: null
+interface State {
+  expand: Boolean,
+  prev: Object
 }
 
 /**
@@ -23,18 +18,18 @@ const Visitors = {
    * @param {Object|Array} ctx 
    * @param {State} state 
    */
-  selector(node, ctx, state) {
+  selector(node: Node, ctx, state) {
     ctx = traverse(node.prefix, ctx, state)
     state.prev = node.prefix
 
     return suffixes(node.suffixes, ctx, state)
   },
   /* { token: Token, wildcard: {}} */
-  name(node, ctx, state) {
+  name(node: Node, ctx, state) {
     return wildcard(node, state)(ctx)
   },
   // { start, slice, end }
-  array(node, ctx, state) {
+  array(node: Node, ctx, state) {
     if (!Array.isArray(ctx)) return
 
     // flatten result
@@ -59,7 +54,7 @@ const Visitors = {
     // all elements e.g. `a[]`
     return ctx
   },
-  property(node, ctx, state) {
+  property(node: Node, ctx, state) {
 
     // select many properties from array e.g. `users[].name` but not `users[1].name`
     let prev = state.prev
@@ -79,7 +74,7 @@ const Visitors = {
   },
 }
 
-const suffixes = (nodes, ctx, state) => {
+const suffixes = (nodes: Node[], ctx, state) => {
   return (nodes || []).reduce((ctx, node, i) => {
     // get previous node first, if failed (at `0` index) use parent node as `prev`
     state.prev = nodes[i - 1] || state.prev
@@ -87,7 +82,7 @@ const suffixes = (nodes, ctx, state) => {
   }, ctx)
 }
 
-const wildcard = (node, state) => ctx => {
+const wildcard = (node: Node, state) => ctx => {
 
   // wildcard e.g. `*name` will match `username`, `firstname`
   let nodeKey = node.token.value
@@ -104,6 +99,7 @@ const wildcard = (node, state) => ctx => {
         else if (start && end) return k.indexOf(nodeKey) > -1
         else if (start) return k.substr(k.length - nodeKey.length) === nodeKey
         else if (end)   return k.substr(0, nodeKey.length) === nodeKey
+        else return false
       })
       .map(k => ctx[k])
 
@@ -123,15 +119,14 @@ const flatten = xs => xs.reduce((a, b) => a.concat(b), [])
  * @param {Object|Array} ctx Context to perform selection
  * @param {State} state      Visitor's state
  */
-function traverse(node, ctx, state) {
+function traverse(node: Node, ctx, state: State) {
   state = state || { expand: false, prev: null }
   if (node.type in Visitors) {
-    // console.log(node.type, state)
     return Visitors[node.type](node, ctx, state)
   }
 
   throw new Error(`Invalid node ${node.type}`)
 }
 
-module.exports = (selector, data) => traverse(parse(tokenize(selector)), data)
+export default (selector, data) => traverse(parse(tokenize(selector)), data, { expand: false, prev: null })
   
