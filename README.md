@@ -16,7 +16,7 @@ npm install @gizt/selector
 import select from '@gizt/selector'
 
 // node
-const select = require('@gizt/selector)
+const select = require('@gizt/selector')
 ```
 
 ### Example
