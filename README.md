@@ -10,9 +10,7 @@
 npm install @gizt/selector
 ```
 
-### Example
-
-#### Usage
+### Usage
 ```js
 // es6/browser
 import select from '@gizt/selector'
@@ -21,6 +19,7 @@ import select from '@gizt/selector'
 const select = require('@gizt/selector)
 ```
 
+### Example
 ```js
 let data = {
   title: 'Awesome',
