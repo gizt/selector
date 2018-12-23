@@ -1,1 +1,1 @@
-module.exports = require('./selector').default
+export = require('./selector').default
