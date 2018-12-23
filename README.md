@@ -52,7 +52,7 @@ Support prefix, suffix, middle and star
 select('users[].na*', data)  // ['John', 'Joe']
 
 // suffix
-select('users[].ly', data)  // ['Doe', 'Dae']
+select('users[].*ly', data)  // ['Doe', 'Dae']
 
 // middle
 select('users[].*am*', data) // ['John', 'Doe', 'Joe', 'Dae']
