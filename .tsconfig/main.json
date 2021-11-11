@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "../dist/main"
+  },
+  "exclude": [
+    "src/index.module.ts",
+    "node_modules/**"
+  ]
+}

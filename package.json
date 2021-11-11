@@ -1,6 +1,6 @@
 {
   "name": "@gizt/selector",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "description": "JSON Selector",
   "keywords": [
     "json",
@@ -12,8 +12,9 @@
   "module": "dist/module/index.module.js",
   "scripts": {
     "build": "run-p build:*",
-    "build:main": "tsc -p tsconfig.main.json",
-    "build:module": "tsc -p tsconfig.module.json",
+    "build:main": "tsc -p .tsconfig/main.json",
+    "build:module": "tsc -p .tsconfig/module.json",
+    "build:single": "tsc -p .tsconfig/single.json",
     "dev": "tsc -w -p tsconfig.main.json",
     "test": "jest",
     "pre-release": "run-s build test"

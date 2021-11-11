@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "lib": ["es5", "es6", "dom"],
+    "module": "amd",
+    "inlineSourceMap": false,
+    "outFile": "../dist/single/index.js"
+  },
+  "include": [
+    "../src/selector.ts"
+  ],
+  "exclude": [
+    "../src/index.module.ts",
+    "../src/index.main.ts",
+    "../node_modules/**"
+  ]
+}
